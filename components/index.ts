@@ -5,3 +5,4 @@ export { default as AppLogo } from "./AppLogo";
 export { default as MenuLinkItem } from "./MenuLinkItem";
 export { default as AnnouncementWidget } from "./AnnouncementWidget";
 export { default as ListView } from "./ListView";
+export { default as ErrorBoundary } from "./ErrorBoundary";

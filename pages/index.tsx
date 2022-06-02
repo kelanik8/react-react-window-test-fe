@@ -4,6 +4,7 @@ import {
   AppContainer,
   AppContentContainer,
   Aside,
+  ErrorBoundary,
   ListView,
 } from "../components";
 
@@ -11,11 +12,15 @@ const Home: NextPage = () => {
   return (
     <div id="index-module">
       <AppContainer>
-        <Aside />
-        <AppContentContainer>
-          <ListView />
-          <ListView />
-        </AppContentContainer>
+        <ErrorBoundary>
+          <Aside />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <AppContentContainer>
+            <ListView />
+            <ListView />
+          </AppContentContainer>
+        </ErrorBoundary>
       </AppContainer>
       <AnnouncementWidget />
     </div>
