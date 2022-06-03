@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const LogoContainer = styled.span`
+export const LogoContainer = styled.div`
   --bg-opacity: 1;
   background-color: rgb(229, 231, 235, var(--bg-opacity));
   border-radius: 0.5rem;

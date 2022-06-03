@@ -1,20 +1,18 @@
-import { List, ListCount, ListTitle, ListViewItem } from "./styles";
+import { CSSProperties } from "react";
+import { ListCount } from "./styles";
 
-export default function ListView() {
+export default function ListView({
+  index,
+  style,
+}: {
+  index: number;
+  style: CSSProperties;
+}) {
   return (
-    <ListViewItem>
-      <List>
-        <ListCount>1.1</ListCount>
-        <ListTitle>Title</ListTitle>
-      </List>
-      <List>
-        <ListCount>1.1</ListCount>
-        <ListTitle>Title</ListTitle>
-      </List>
-      <List>
-        <ListCount>1.1</ListCount>
-        <ListTitle>Title</ListTitle>
-      </List>
-    </ListViewItem>
+    <ListCount
+      className={index % 2 ? "ListItemOdd" : "ListItemEven"}
+      style={style}>
+      <div>Row {index}</div>
+    </ListCount>
   );
 }

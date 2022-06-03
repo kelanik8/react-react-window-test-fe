@@ -1,11 +1,9 @@
-import randomWords from "random-words";
-
 export interface ITextBlock {
   id: string;
   orderNumber: string;
   type: string;
   text: string;
-  data: INestedTextBlock[];
+  //   data: INestedTextBlock[];
 }
 
 export interface INestedTextBlock {
@@ -25,11 +23,11 @@ function createTextBlock({ id }: { id: number }) {
     orderNumber: `${id}.`,
     type: "title-block",
     text: "Lorem ipsum",
-    data: Array(300)
-      .fill({})
-      .map((_, index) =>
-        createNestedTextBlock({ parentId: "1", itemIndex: index })
-      ),
+    // data: Array(300)
+    //   .fill({})
+    //   .map((_, index) =>
+    //     createNestedTextBlock({ parentId: id, itemIndex: index })
+    //   ),
   };
 }
 
@@ -37,13 +35,13 @@ function createNestedTextBlock({
   parentId,
   itemIndex,
 }: {
-  parentId: string;
+  parentId: string | number;
   itemIndex: string | number;
 }) {
   return {
     id: `item-${parentId}-${itemIndex}`,
     orderNumber: `${parentId}.${itemIndex}`,
     type: "text-block",
-    text: randomWords(),
+    text: Math.random().toString(36).substr(2),
   };
 }

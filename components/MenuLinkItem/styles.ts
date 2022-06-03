@@ -15,6 +15,8 @@ export const LinkItem = styled.div`
   align-items: center;
   display: flex;
   margin-bottom: 0.5rem;
+  border: none;
+  background: none;
 
   &:hover {
     background-color: rgb(243, 244, 246, var(--bg-opacity));

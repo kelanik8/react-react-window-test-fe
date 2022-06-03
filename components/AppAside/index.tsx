@@ -1,18 +1,21 @@
 import { useRecoilValue } from "recoil";
 import { AppLogo, MenuLinkItem } from "..";
 import { blocksListsAtom } from "../../atoms/blocksAtom";
+import { ITextBlock } from "../../data/document";
 import { MenuContainer, MenuNavigator } from "./styles";
 
 export default function AppAside() {
-  const blocksLists = useRecoilValue(blocksListsAtom);
+  const textBlocks = useRecoilValue(blocksListsAtom);
   return (
     <MenuContainer>
       <MenuNavigator>
         <AppLogo />
-        {JSON.stringify(blocksLists)}
-        <MenuLinkItem text="Link 1" />
-        <MenuLinkItem text="Link 2" />
-        <MenuLinkItem text="Link 3" />
+        {textBlocks.map((block: ITextBlock) => (
+          <MenuLinkItem
+            key={`text-block-${block.id}`}
+            text={`${block.orderNumber} ${block.text}`}
+          />
+        ))}
       </MenuNavigator>
     </MenuContainer>
   );
