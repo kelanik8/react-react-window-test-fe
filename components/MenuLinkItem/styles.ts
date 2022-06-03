@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const LinkItem = styled.div`
+interface LinkItemProps {
+  readonly isActive: boolean;
+}
+
+export const LinkItem = styled.div<LinkItemProps>`
   --text-opacity: 1;
   --bg-opacity: 1;
   color: rgb(107, 114, 128, var(--text-opacity));
@@ -21,4 +25,10 @@ export const LinkItem = styled.div`
   &:hover {
     background-color: rgb(243, 244, 246, var(--bg-opacity));
   }
+
+  ${(props) =>
+    props.isActive &&
+    css`
+      background-color: rgb(243, 244, 246, var(--bg-opacity));
+    `}
 `;
