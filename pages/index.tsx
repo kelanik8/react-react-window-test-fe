@@ -7,8 +7,10 @@ import {
   ErrorBoundary,
   ListView,
 } from "../components";
+import { BLOCK_LIST_DATA } from "../data/document";
 
 const Home: NextPage = () => {
+  console.log(BLOCK_LIST_DATA);
   return (
     <div id="index-module">
       <AppContainer>

@@ -1,222 +1,33 @@
 import randomWords from "random-words";
 
-export const document = [
-  {
-    id: "item-1",
-    orderNumber: "1.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-2",
-    orderNumber: "2.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-3",
-    orderNumber: "3.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-4",
-    orderNumber: "4.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-5",
-    orderNumber: "5.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-6",
-    orderNumber: "6.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-7",
-    orderNumber: "7.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-8",
-    orderNumber: "8.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-9",
-    orderNumber: "9.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-10",
-    orderNumber: "10.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-11",
-    orderNumber: "11.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-12",
-    orderNumber: "12.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-13",
-    orderNumber: "13.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-14",
-    orderNumber: "14.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-15",
-    orderNumber: "15.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-16",
-    orderNumber: "16.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-17",
-    orderNumber: "17.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-18",
-    orderNumber: "18.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-19",
-    orderNumber: "19.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-20",
-    orderNumber: "20.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-21",
-    orderNumber: "21.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-22",
-    orderNumber: "22.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-23",
-    orderNumber: "23.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-24",
-    orderNumber: "24.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-25",
-    orderNumber: "25.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-26",
-    orderNumber: "26.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-27",
-    orderNumber: "27.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-28",
-    orderNumber: "28.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-29",
-    orderNumber: "29.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-  {
-    id: "item-30",
-    orderNumber: "30.",
-    type: "title-block",
-    text: "Lorem ipsum",
-    data: [],
-  },
-];
+export const BLOCK_LIST_DATA = Array(30)
+  .fill({})
+  .map((_, index) => createTextBlock({ id: index + 1 }));
 
-function createNestedTextBlock({ parentId }: { parentId: string }) {
+function createTextBlock({ id }: { id: number }) {
   return {
-    id: `item-${parentId}-${parentId}`,
-    orderNumber: `${parentId}.${parentId}.`,
+    id: `item-${id}`,
+    orderNumber: `${id}.`,
+    type: "title-block",
+    text: "Lorem ipsum",
+    data: Array(300)
+      .fill({})
+      .map((_, index) =>
+        createNestedTextBlock({ parentId: "1", itemIndex: index })
+      ),
+  };
+}
+
+function createNestedTextBlock({
+  parentId,
+  itemIndex,
+}: {
+  parentId: string;
+  itemIndex: string | number;
+}) {
+  return {
+    id: `item-${parentId}-${itemIndex}`,
+    orderNumber: `${parentId}.${itemIndex}`,
     type: "text-block",
     text: randomWords(),
   };
