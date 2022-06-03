@@ -1,3 +1,5 @@
+import randomWords from "random-words";
+
 export const document = [
   {
     id: "item-1",
@@ -216,6 +218,6 @@ function createNestedTextBlock({ parentId }: { parentId: string }) {
     id: `item-${parentId}-${parentId}`,
     orderNumber: `${parentId}.${parentId}.`,
     type: "text-block",
-    text: "Lorem ipsum",
+    text: randomWords(),
   };
 }
