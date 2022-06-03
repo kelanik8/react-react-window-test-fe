@@ -1,4 +1,6 @@
 import type { NextPage } from "next";
+import { useRecoilState } from "recoil";
+import { blocksListsAtom } from "../atoms/blocksAtom";
 import {
   AnnouncementWidget,
   AppContainer,
@@ -10,7 +12,9 @@ import {
 import { BLOCK_LIST_DATA } from "../data/document";
 
 const Home: NextPage = () => {
-  console.log(BLOCK_LIST_DATA);
+  const [_, setBlockList] = useRecoilState(blocksListsAtom);
+  setBlockList(BLOCK_LIST_DATA);
+
   return (
     <div id="index-module">
       <AppContainer>

@@ -1,6 +1,21 @@
 import randomWords from "random-words";
 
-export const BLOCK_LIST_DATA = Array(30)
+export interface ITextBlock {
+  id: string;
+  orderNumber: string;
+  type: string;
+  text: string;
+  data: INestedTextBlock[];
+}
+
+export interface INestedTextBlock {
+  id: string;
+  orderNumber: string;
+  type: string;
+  text: string;
+}
+
+export const BLOCK_LIST_DATA: ITextBlock[] = Array(30)
   .fill({})
   .map((_, index) => createTextBlock({ id: index + 1 }));
 
