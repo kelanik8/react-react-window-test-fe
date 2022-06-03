@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const blocksListState = atom({
+export const blocksListsAtom = atom({
   key: "blocksListState",
   default: [],
 });
