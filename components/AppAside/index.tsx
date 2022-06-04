@@ -10,7 +10,6 @@ export default function AppAside() {
   const textBlocks = useRecoilValue(blocksListsAtom);
 
   const onMenuClick = (id: string) => {
-    console.log(id);
     setActiveBlock(id);
   };
 

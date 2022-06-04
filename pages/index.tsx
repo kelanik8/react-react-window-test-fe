@@ -18,12 +18,12 @@ const Home: NextPage = () => {
   return (
     <div id="index-module">
       <AppContainer>
-        {/* <ErrorBoundary> */}
-        <Aside />
-        {/* </ErrorBoundary> */}
-        {/* <ErrorBoundary> */}
-        <AppContentContainer />
-        {/* </ErrorBoundary> */}
+        <ErrorBoundary>
+          <Aside />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <AppContentContainer />
+        </ErrorBoundary>
       </AppContainer>
       <AnnouncementWidget />
     </div>

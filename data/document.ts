@@ -3,7 +3,7 @@ export interface ITextBlock {
   orderNumber: string;
   type: string;
   text: string;
-  //   data: INestedTextBlock[];
+  data?: INestedTextBlock[];
 }
 
 export interface INestedTextBlock {
@@ -15,19 +15,19 @@ export interface INestedTextBlock {
 
 export const BLOCK_LIST_DATA: ITextBlock[] = Array(30)
   .fill({})
-  .map((_, index) => createTextBlock({ id: index + 1 }));
+  .map((_, index) => createTextBlock({ id: index }));
 
 function createTextBlock({ id }: { id: number }) {
   return {
-    id: `item-${id}`,
-    orderNumber: `${id}.`,
+    id: `${id * 300}`,
+    orderNumber: `${id + 1}.`,
     type: "title-block",
     text: "Lorem ipsum",
-    // data: Array(300)
-    //   .fill({})
-    //   .map((_, index) =>
-    //     createNestedTextBlock({ parentId: id, itemIndex: index })
-    //   ),
+    data: Array(300)
+      .fill({})
+      .map((_, index) =>
+        createNestedTextBlock({ parentId: id + 1, itemIndex: index })
+      ),
   };
 }
 
